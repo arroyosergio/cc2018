@@ -1,0 +1,193 @@
+.frame{
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+/*Extra small devices (portrait phones, less than 576px)*/ 
+@media (max-width: 575px) { 
+	.titulo_congreso{
+		font-size: 0.3em; 
+		color: #0168B3;
+		letter-spacing: 8px;
+    	text-transform: uppercase;
+    	font-family: "Dosis",sans-serif;
+	}
+	
+	.logos_portada{
+		margin: 0 auto;
+ 		max-width: 100%;
+  		height: auto;
+		letter-spacing: 10px;
+    	text-transform: uppercase;
+    	font-family: "Dosis",sans-serif;
+	}
+	.img2{
+		height:70%;
+		width: 70%;
+	}
+	.btn-responsive{
+		font-size: 0.5em; 
+	}
+	.button_anime {
+	  font-size: 9px;
+	  padding: 3px;
+	  width: 160px;
+	}
+   .footer_responsive p{
+   		font-size: 8px;
+   }
+   .footer_responsive h4{
+   		font-size: 9px;
+   }
+    img.img_responsive {
+	    height: 30px;
+	    width: 40px;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767px) { 
+	.titulo_congreso{
+		font-size: 1em; 
+		color: #0168B3;
+		letter-spacing: 10px;
+    	text-transform: uppercase;
+    	font-family: "Dosis",sans-serif;
+	}
+	
+	.logos_portada{
+		margin: 0 auto;
+        max-width: 100%;
+		height: auto;
+		letter-spacing: 10px;
+    	text-transform: uppercase;
+    	font-family: "Dosis",sans-serif;
+	}
+	
+	.img2{
+		height:60%;
+		width: 60%;
+	}
+	.btn-responsive{
+		font-size: 1.5em; 
+	}
+	
+    img.img_responsive {
+	    height: auto;
+	    width: 150px;
+	    padding-top: 66px
+    }
+
+    img.img_responsive {
+	    height: 120px;
+	    width: 150px;
+    }
+
+
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991px) { 
+	.titulo_congreso{
+		font-size: 1.5em; 
+		color: #0168B3;
+		letter-spacing: 10px;
+    	text-transform: uppercase;
+    	font-family: "Dosis",sans-serif;
+	}
+	
+	.logos_portada{
+		margin: 0 auto;
+		max-width: 100%;
+		 height: auto;	
+		letter-spacing: 10px;
+    	text-transform: uppercase;
+    	font-family: "Dosis",sans-serif;
+	}
+	.img2{
+		height: 60%;
+		width:  60%;
+	}
+	.btn-responsive{
+		font-size: 1.5em; 
+	}
+	
+    img.img_responsive {
+	    height: 150px;
+	    width: 200px;
+    }
+	
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199px) { 
+	.titulo_congreso{
+		font-size: 2em; 
+		color: #0168B3;
+		letter-spacing: 10px;
+    	text-transform: uppercase;
+    	font-family: "Dosis",sans-serif;
+	}
+	.logos_portada{
+		margin: 0 auto;
+		max-width: 100%;
+		 height: auto;
+		letter-spacing: 10px;
+    	text-transform: uppercase;
+    	font-family: "Dosis",sans-serif;
+	  }
+	
+	.img2{
+		height:80%;
+		width:80%;
+	}
+
+	.btn-responsive{
+		font-size: 1.5em; 
+	}
+
+    img.img_responsive {
+	    height: 150px;
+	    width: 200px;
+    }
+
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+	.titulo_congreso{
+		font-size: 2em; 
+		color: #0168B3;
+		letter-spacing: 10px;
+    	text-transform: uppercase;
+    	font-family: "Dosis",sans-serif;
+	}
+	.logos_portada{
+		margin: 0 auto;
+		max-width: 100%;
+		height: auto;	
+		letter-spacing: 10px;
+    	text-transform: uppercase;
+    	font-family: "Dosis",sans-serif;
+	}
+	.img2{
+		height:80%;
+		width:80%;
+	}
+	.btn-responsive{
+		font-size: 1.5em; 
+	}
+
+	.button_anime {
+	  font-size: 18px;
+	  padding: 10px;
+	  width: 300px;
+	}
+    img.img_responsive {
+	    height: auto;
+	    width: 200px;
+    }
+
+}
+
+

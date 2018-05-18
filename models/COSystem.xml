@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?><Db flnm="COSystem" nm="COSystem" ver="1.3.4">
+  <VerLbl/>
+  <VerNotes/>
+  <DefTblOpts/>
+  <DocFolder>/home/adrian/projects/COSystem</DocFolder>
+  <Sch Cm="" nm="schemaA">
+    <Tbl UsSo="1" nm="tblArticulos">
+      <TblOpts/>
+      <Pk ClNs="artId" nm="pktblArticulos"/>
+      <Cl au="1" df="" nm="artId" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="artNombre" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="300" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="artArchivo" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="300" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="artAreaTematica" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="1" nm="artRecibido" nu="1">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>1-recibido, 0-no recibido</Cm>
+      </Cl>
+      <Cl au="0" df="0" nm="artDictaminado" nu="1">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>1-dictaminado, 0-no dictaminado</Cm>
+      </Cl>
+      <Cl au="0" df="0" nm="artAvisoCambio" nu="1">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>1-realizar cambios, 0-no realizar cambios</Cm>
+      </Cl>
+      <Cl au="0" df="'extenso'" nm="artTipo" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>enum 'extenso', 'poster'</Cm>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="tblAutores">
+      <TblOpts/>
+      <Pk ClNs="autId" nm="pktblAutores"/>
+      <Cl au="1" df="" nm="autId" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="autNombre" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="300" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="autApellidoPaterno" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="autApellidoMaterno" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="autInstitucionProcedencia" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="300" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="autCiudad" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="300" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="autEstado" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="300" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="autPais" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="300" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="'licenciatura'" nm="autGradoAcademico" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>enum 'licenciatura','maestria', 'doctorado'</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="autTipoInstitucion" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="autAsistenciaCica" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="usuId" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="autCorreo" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="300" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_tblAutores_tblUsuarios" prLkCl="usuId" upAc="3">
+        <PrTb mn="0" nm="tblUsuarios" oe="1" sch="schemaA" zr="1"/>
+        <CdTb mn="1" nm="tblAutores" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="usuId" prCl="usuId"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="tblAutoresArticulos">
+      <TblOpts/>
+      <Pk ClNs="autArtid" nm="pktblAutoresArticulos"/>
+      <Cl au="1" df="" nm="autArtid" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="autId" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="artId" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_tblAutoresArticulos_tblArticulos" prLkCl="artId" upAc="3">
+        <PrTb mn="0" nm="tblArticulos" oe="1" sch="schemaA" zr="1"/>
+        <CdTb mn="1" nm="tblAutoresArticulos" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="artId" prCl="artId"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_tblAutoresArticulos_tblAutores" prLkCl="autId" upAc="3">
+        <PrTb mn="0" nm="tblAutores" oe="1" sch="schemaA" zr="1"/>
+        <CdTb mn="1" nm="tblAutoresArticulos" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="autId" prCl="autId"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="tblUsuarios">
+      <TblOpts/>
+      <Pk ClNs="usuId" nm="pktblUsuarios"/>
+      <Cl au="1" df="" nm="usuId" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="usuCorreo" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="300" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="usuPassword" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="256" sc="null" sg="1" un="0"/>
+        <Cm>contraseña en md5</Cm>
+      </Cl>
+      <Cl au="0" df="'autor'" nm="usuTipo" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>enum 'admin', 'autor'</Cm>
+      </Cl>
+      <Cl au="0" df="si" nm="usuPrimerIngreso" nu="1">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>enum 'si', 'no'</Cm>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <CustomTypes/>
+  </Sch>
+  <Dgm nm="diagramA">
+    <RnCf ClkAct="true" FtSz="11" lkStgy="RightAngleStrategy" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="1" PkCols="1"/>
+      <ErNotation>BarkerErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="tblUsuarios" x="65" y="75"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="tblAutores" x="195" y="284"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="tblArticulos" x="663" y="56"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="tblAutoresArticulos" x="701" y="292"/>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="schemaA.tblAutores.fk_tblAutores_tblUsuarios" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="326" x2="326" y1="184" y2="267"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="schemaA.tblAutoresArticulos.fk_tblAutoresArticulos_tblArticulos" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="759" x2="759" y1="204" y2="275"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="schemaA.tblAutoresArticulos.fk_tblAutoresArticulos_tblAutores" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="530" x2="684" y1="342" y2="342"/>
+      </positionableLines>
+    </FkGl>
+    <Notes/>
+    <Zones/>
+  </Dgm>
+  <RnmMgr NxRnmId="6">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="1" nNm="tblUsuarios" oNm="usuarios"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="tblUsuarios" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="2" nNm="usuId" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="tblAutores" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="3" nNm="autId" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="tblArticulos" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="4" nNm="artId" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="tblAutoresArticulos" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="5" nNm="autArtid" oNm="Id"/>
+    </RnmCh>
+  </RnmMgr>
+  <DbDocOptionMgr>
+    <BasicOptionMgr>
+      <Name>db.doc.option.mgr</Name>
+      <BoolOpt lbl="Diagrams" nm="doc.diagrams" on="1" spl="0"/>
+      <BoolOpt lbl="Foreign Keys" nm="doc.fks" on="1" spl="0"/>
+      <BoolOpt lbl="Indexes" nm="doc.indexes" on="1" spl="0"/>
+      <BoolOpt lbl="Overwrite CSS File" nm="doc.overwrite.css" on="1" spl="0"/>
+      <BoolOpt lbl="Procedures" nm="doc.procs" on="1" spl="0"/>
+      <BoolOpt lbl="Schemas" nm="doc.schemas" on="1" spl="0"/>
+      <BoolOpt lbl="Sequences" nm="doc.sequences" on="1" spl="0"/>
+      <BoolOpt lbl="Tables" nm="doc.tables" on="1" spl="0"/>
+      <BoolOpt lbl="Triggers" nm="doc.triggers" on="1" spl="0"/>
+      <BoolOpt lbl="Views" nm="doc.views" on="1" spl="0"/>
+    </BasicOptionMgr>
+  </DbDocOptionMgr>
+  <OpenEditors>
+    <OpenEditor ClsNm="Diagram" fqn="null.diagramA" selected="1"/>
+  </OpenEditors>
+  <TreePaths>
+    <TreePath/>
+  </TreePaths>
+</Db>

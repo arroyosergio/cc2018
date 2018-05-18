@@ -1,0 +1,27 @@
+#listaUsuarios tr .operaciones span {
+    cursor: pointer;
+}
+#listaUsuarios tr .operaciones span:hover {
+    color: blue;
+}
+.container-principal{
+	width: auto;
+}
+.panel .panel-body{
+    margin-top: 2.5em;
+}
+
+.panel .title-usuarios{
+ padding: 1em 1em;   
+}
+
+.panel .nuevousuario{
+    margin: 10px 15px;
+}
+
+.side-body {
+	float: right;
+	width: 85%;
+  	margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=si">
+    <title>CICA 2018</title>
+    <link rel="icon" type="image/png" href="http://localhost/sensontl/public/images/favicon.png" />
+    <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" media="all" rel="stylesheet" />
+    <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.0/normalize.min.css" media="all" rel="stylesheet" />
+    <link rel="stylesheet"	href="http://localhost/sensontl/public/plugins/toastr/toastr.min.css" />
+
+	<!--<link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap_yeti.min.css">
+	<link rel="stylesheet" href="public/css/custom.css"> -->
+	
+	<link rel="stylesheet" href="http://localhost/sensontl/public/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://localhost/sensontl/public/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://localhost/sensontl/public/css/animate.min.css">
+	<link rel="stylesheet" href="http://localhost/sensontl/public/css/fluidbox.min.css">
+	<link rel="stylesheet" href="http://localhost/sensontl/public/css/style.css">
+	     <link rel="stylesheet"	href="http://localhost/sensontl/public/css/general.css" />
+</head>
+<body>
+        <div class="container menu_superior">
+      <header id="head-section" class="navbar navbar-default site-header" role="banner">
+          <nav class="navbar navbar-default navbar-static-top container-fluid ">
+             <div class="navbar-header">
+                    <a href="http://placehold.it/250x250" title="" data-fluidbox>
+                        <img class="img-fluid img-responsive logo_header" src="http://placehold.it/90x70" title="" alt="" />
+                    </a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+             </div>
+              <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav head-menu">
+                    <li><a href="index">Inicio</a></li>
+                    <li id="mConvocatoria" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Convocatoria<span class="caret"></span></a>
+                        <ul class="dropdown-menu sub-menu" role="menu" aria-labelledby="dLabel">
+                              <li><a href="fechasImportantes"> Fechas importantes </a></li>
+                              <li><a href="noticias"> Noticias </a></li>
+                        </ul>
+                    </li>
+                    <li id="mPrograma" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Programa<span class="caret"></span></a>
+                        <ul class="dropdown-menu sub-menu" role="menu" aria-labelledby="dLabel">
+                              <li><a href="programaGeneral"> General </a></li>
+                              <li><a href="programaTalleres"> Talleres</a></li>
+                              <li><a href="programaMesas"> Mesas de Trabajo</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="hospedaje">Hospedaje</a></li>	
+                    <li id="mAutores" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Autores<span class="caret"></span></a>
+                        <ul class="dropdown-menu sub-menu">
+                            <li><a href="guia">Guía</a></li>
+                            <li><a href="registroautores" >Registro</a></li>
+                        </ul>
+                    </li>
+                    <li id="mAsistentes" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Asistentes<span class="caret"></span></a>
+                        <ul class="dropdown-menu sub-menu">
+                            <li><a href="informacion">Información</a></li>
+                            <li><a href="inscripcion">Registro de pago</a></li>
+                        </ul>
+                    </li>
+                       
+                         <li id="mSesion">
+							 <a href="#" id="user-login" ><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Iniciar sesión</a>                          
+							<!--  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Iniciar sesión<span class="caret"></span></a>
+                           <ul class="dropdown-menu sub-menu">
+                                <li><a href="autores/index.html">Autor</a></li>
+                                <li><a href="editor/index.html">Editor</a></li>
+                                <li><a href="contador/index.html">Contador</a></li>
+                                <li><a href="administrador/index.html">Administrador</a></li>
+                            </ul>-->
+                        </li>
+                                        
+                </ul>
+              </div><!--/.nav-collapse -->
+          </nav>
+        </header>
+    </div> <!-- /container menu superior-->
+    
+<!--  Este pedaso de codigo sera util para algo, identificar el menu lateral a cargar   		      
+              <li id="li-hospedaje"><a href="hospedaje"><span class="glyphicon glyphicon-bed"></span> Hospedaje</a></li>              
+-->
+
+
+        <div class="container main_container">
+            <div class="container_title feature-head wow fadeInDown animated"  data-wow-animation-name="fadeInDown" style="visibility: visible; animation-name: fadeInDown;" >
+                    <h2 class="text-center">Hospedaje</h2>				  
+            </div>
+            <!-- frame-container contiene los elementos para desplegar en el marco  -->
+			<div class="frame-container">
+					<div class="frame container-fluid">
+						<div class="frame-title row">
+							<div class="logo-frame col-lg-1 col-sm-1"><i class="fa fa-bed fa-2x" aria-hidden="true"> </i></div>
+							<div class="frame-title-text text-left logo-frame col-lg-11 col-sm-11"><p>La Abadia Hotel</p></div>
+						</div>
+						<div class="frame-message row">
+						    <div class="col-lg-3 col-sm-3">
+						    	<a href="http://localhost/sensontl/public/images/hoteles/abadia_hotel.png" title="" data-fluidbox>
+                                    <img class="img-fluid img-responsive image_center" src="http://localhost/sensontl/public/images/hoteles/abadia_hotel.png" title="" alt="" />
+                                </a>	
+						    </div>					    
+						    <div class="col-lg-9 col-sm-9">
+							     <p>Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc</p>
+						    </div>
+						</div>
+						<div class="frame-bottons row">
+						    <div class=" text-right col-lg-12 col-sm-12">
+						        <a data-toggle="tooltip" title="Sitio del hotel"  href="http://www.hoteleslaabadia.com/es-es/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                <a data-toggle="tooltip" title="Perfil de facebook"  href="https://www.facebook.com/HotelesLaAbadia" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                                <a data-toggle="tooltip" title="Cuenta de twitter"   href="https://twitter.com/HOTELESLABADIA" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a data-toggle="tooltip" title="Perfil de Pinterest"  href="https://www.pinterest.com.mx/edelmirahotel/hoteles-la-abad%C3%ADa/" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            </div>
+						</div>
+					</div>
+            </div>
+            <br><!-- termine frame-container -->
+        </div>        <foother class="foother">
+        	<div class="container foother-container">
+        		<div class="row">
+                    <div class="col-lg-3 col-sm-3   wow fadeInUp animated " data-wow-duration="2.5s" data-wow-delay="4s" data-wow-animation-name="fadeInUp" style="visibility: visible; animation-duration: 2.5s; animation-delay: .1s; animation-name: fadeInUp;">
+                        <div class="contact-info">
+                            <h4 class="foother_title">Información de contacto</h4>
+                            <address>
+                                <p class="address"><span class="resalted"><strong>Persona de contacto	</strong></span></p>
+                                <p><i class="fa fa-user-circle-o" aria-hidden="true"></i> Posición en la organización </p>
+                                <span> <i class="fa fa-phone-square" aria-hidden="true"></i> Teléfono : (456) 64 371 80 
+                                <br>
+                                Extensiones: 101, 106, 121 y 105 </span>
+                                <p><i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp;Email :  <a href="mailto:correo@cica.com">correo@dominio.com</a></p>
+                            </address>
+                        </div>
+                    </div>
+        			<div class="col-lg-3 col-sm-3 wow fadeInUp animated" data-wow-duration="2.5s" data-wow-delay="4s" data-wow-animation-name="fadeInUp" style="visibility: visible; animation-duration: 2.5s; animation-delay: .5s; animation-name: fadeInUp;">
+                        <div class="navigation">
+                            <a href="index"><h4>CICA 2018</h4></a>
+                            <p><a href="fechasImportantes">Fechas importantes</a></p>
+                            <p><a href="guia">Autores</a></p>
+                            <p><a href="informacion">Asistentes</a></p>
+                            <p><a href="noticias">Noticias</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 wow fadeInUp animated" data-wow-duration="2.5s" data-wow-delay="4s" data-wow-animation-name="fadeInUp" style="visibility: visible; animation-duration: 2.5s; animation-delay: .9s; animation-name: fadeInUp;">
+                          <h4>Gobierno del Estado de Guanajuato</h4>
+                    </div>
+        		</div>
+        	</div>
+        </foother>
+        <foother class="foother-small">
+        	<div class="container small-foother-container">
+        		<div class="row">
+        			<div class="col-md-12">
+        				<div class="copyright text-center">
+							<p>Copyright 2018 Congreso Interdisciplinario de Cuerpos Académicos </p>
+                            <p>
+                                <i data-toggle="tooltip" title="HTML5" class="fa fa-html5" aria-hidden="true"></i>
+                                <i data-toggle="tooltip" title="Chrome" class="fa fa-chrome" aria-hidden="true"></i>
+                                <i data-toggle="tooltip" title="Firefox" class="fa fa-firefox" aria-hidden="true"></i>
+                                <i data-toggle="tooltip" title="Safari" class="fa fa-safari" aria-hidden="true"></i>
+                            </p>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </foother>
+        
+    <!--  MODAL LOGIN -->
+    <div id="modal-login" class="modal fade" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+					<span class="modal-title" id="ModalLongTitle">Control de acceso</span>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+                </div>
+                <div class="modal-body">
+					<form id="form-login" action="index/login" class="new-placeholder" method="post">
+						<div class="modal-body">
+							<div class="form-group">
+								<input type="text" id="login-correo" name="correo" placeholder="Correo" class="form-control">
+							</div>
+							<div class="form-group">
+								<input type="password" id="login-password" name="password" placeholder="Contrase&ntilde;a" class="form-control">
+							</div>
+							<a href="resetpassword">¿Recordar contrase&ntilde;a?</a>
+						</div>
+						<div class="modal-footer" >
+							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Cancelar</button>
+							<button class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i> Aceptar</button>
+						</div>
+					</form>
+				</div>
+            </div>
+        </div>
+    </div>
+             
+              
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
+        <script src="http://localhost/sensontl/public/plugins/jquery-2.1.4.min.js"></script>
+        <script src="http://localhost/sensontl/public/plugins/toastr/toastr.min.js"></script>
+        <script src="http://localhost/sensontl/public/js/general.js"></script>
+        <script src="http://localhost/sensontl/public/js/jquery-2.1.4.min.js"></script><script src="http://localhost/sensontl/public/js/bootstrap.min.js"></script><script src="http://localhost/sensontl/public/js/index.js"></script><script src="http://localhost/sensontl/public/js/jquery.fluidbox.min.js"></script>        <script>
+                $(function () {
+                    // You can use any kind of selectors for jQuery Fluidbox
+                    $('.main_container a[data-fluidbox]').fluidbox();
+                    $('.navbar-header a[data-fluidbox]').fluidbox();
+                });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+#lstAreasTemas .imgVineta{
+	display: inline-block;
+	margin: 5px 10px;
+}
+
+#lstAreasTemas{
+	list-style: none;
+}
+@media (max-width: 575px) { 
+	#lstAreasTemas .imgVineta{
+		width: 13%;
+	}
+	
+	#lstAreasTemas{
+		padding-left: 0px;
+	}
+	.areas_texto{
+		font-size: 1.2rem;
+	}
+}

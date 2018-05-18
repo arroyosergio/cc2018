@@ -1,0 +1,112 @@
+
+/*STYLO UTILIZADO EN EL PANEL DE CONTROL*/
+#listaTrabajos .id{
+  padding: 0px 5px;
+  margin: 0px;
+  text-align: center;
+  vertical-align: middle;
+  width: 4%;
+}
+
+#listaTrabajos .archivo{
+  padding: 0px 5px;
+  margin: 0px;
+  text-align: center;
+  vertical-align: middle;
+  width: 8%;
+}
+
+#listaTrabajos .titulo{
+  padding: 0px 5px;
+  margin: 0px;
+  text-align: left;
+  vertical-align:top ;
+  width: 20%;
+}
+  
+#listaTrabajos .autor{
+  padding: 0px 5px;
+  margin: 0px;
+  text-align: left;
+  vertical-align: top;
+  width: 20%; 
+}  
+
+#listaTrabajos .email{
+  padding: 0px 5px;
+  margin: 0px;
+  text-align: left;
+  vertical-align: top;
+  width: 20%;
+}  
+
+#listaTrabajos .areatematica{
+  padding: 0px 5px;
+  margin: 0px;
+  text-align: left;
+  vertical-align: top;
+  width: 20%;
+} 
+
+#listaTrabajos .tipo{
+  padding: 0px 5px;
+  margin: 0px;
+  text-align: left;
+  vertical-align: top;
+  width: 8%;
+} 
+#listaTrabajos .dictaminado{
+  padding: 0px 5px;
+  margin: 0px;
+  text-align: center;
+  vertical-align: middle;
+  width: 8%;
+} 
+#listaTrabajos .aviso{
+  padding: 0px 5px;
+  margin: 0px;
+  text-align: center;
+  vertical-align: middle;
+  width: 8%;
+} 
+#listaTrabajos .recibido{
+  padding: 0px 5px;
+  margin: 0px;
+  text-align: center;
+  vertical-align: middle;
+  width: 8%;
+} 
+#listaTrabajos .deposito{
+  padding: 0px 5px;
+  margin: 0px;
+  text-align: center;
+  vertical-align: middle;
+  width: 8%;
+} 
+.glyphicon.glyphicon-floppy-save {
+    font-size: 1.5em;
+}
+.glyphicon.glyphicon-ok,.glyphicon.glyphicon-remove {
+    font-size: 1.5em;
+}
+#listaTrabajos tr span {
+    cursor: pointer;
+}
+
+
+.row-gen-doc{
+	display: inline-block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.panel-listatrabajos{
+	display: inline-block;
+	width: 85%;
+	margin-left: 0.5em;
+}
+.container-principal{
+	width: auto;
+	
+}
+

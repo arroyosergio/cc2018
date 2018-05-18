@@ -1,0 +1,89 @@
+#WindowLoad
+{
+    position:fixed;
+    top:0px;
+    left:0px;
+    z-index:3200;
+    filter:alpha(opacity=65);
+   -moz-opacity:65;
+    opacity:0.65;
+    background:#999;
+}
+
+/* Header */
+.navbar-default .navbar-brand {
+    color: rgba(53, 135, 83, 1);
+}
+.navbar-default {
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 1);
+    border-bottom-width: 1px;
+}
+.navbar-default .navbar-nav>li>a {
+    color: rgba(119, 119, 119, 1);
+    background-color: rgba(255, 255, 255, 1);
+}
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(255, 152, 0, 1);
+    background-color: rgba(255, 255, 255, 1);
+}
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(255, 152, 0, 1);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #ffffff;
+    
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #8f8f8f;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+.navbar-default .navbar-toggle:hover .icon-bar,
+.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #ffffff;
+}
+
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 2px;
+  width: auto;
+}
+
+/* FOOTER */
+/* .footer {
+  color: #FFF;
+  background-color: #245985;
+} */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 350px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+ /*  height: 60px; */
+  color: #FFF;
+  background-color: #245985;
+}
+.nav-header-ie7{
+	display:block;
+	clear:both;
+	position:relative;
+}

@@ -1,0 +1,50 @@
+#comentario_val_cartas {
+   resize: none;
+}
+
+.row-cartas{
+	display: inline-block;
+	width: 100%;
+	margin-left: 0.5em;
+}
+
+.container-listatrabajos{
+	display: inline-block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	width: 85%;
+}
+
+input[type="file"]{
+    color: transparent;
+}
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px !important;
+  direction: ltr;
+  cursor: pointer;
+}
+
+/* Fixes for IE < 8 */
+@media screen\9 {
+  .fileinput-button input {
+    filter: alpha(opacity=0);
+    font-size: 100%;
+    height: 100%;
+  }
+}
+
+#div-enviar-correo{
+	margin-top: 0.5em;
+}
