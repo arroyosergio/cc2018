@@ -83,7 +83,7 @@
                         <ul class="dropdown-menu sub-menu">
                             <li><a href="guia">Guía</a></li>
                             <li><a href="registroautores" >Registro</a></li>
-                            <li><a href="./public/movil/cicaNotificaciones.apk" >App CICA (androide)</a></li>
+                            <li><a href="./public/movil/cicaNotificaciones.apk" >App CICA (Android)</a></li>
                             
                         </ul>
                     </li>

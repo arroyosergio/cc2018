@@ -240,5 +240,78 @@ class mifacturacion extends Controller {
         //echo  ($xml);
     
     }
+   
+
+    function generaFacturaPDF() {
+        try{
+       		//$responseDB = $this->model->get_autores_articulo($_GET['id']);
+        	// Instanciation of inherited class
+            $this->GeneratePDF->AddPage("P","Letter");
+        	#Establecemos los m�rgenes izquierda, arriba y derecha:
+        	$this->GeneratePDF->SetMargins(10, 10 , 10);
+        	#Establecemos el margen inferior:
+        	$this->GeneratePDF->SetAutoPageBreak(true,15);
+        	//COLOCA EL PRIMER AUTOR
+            //$this->GeneratePDF->SetFontSize(15);
+            $this->GeneratePDF->AddFont('helvetica', '', 'helvetica.php');
+            $this->GeneratePDF->SetFont('helvetica', '', 10);
+            $fila=5;
+            $col=40;
+            //=================================================================
+            //HACE LA ASIGNACION Y CONVERSION PARA CARACTERES ESPECIALES
+            //=================================================================   
+        	$emisor_nombre=iconv('UTF-8', 'windows-1252', "UNIVERSIDAD TECNOLOGICA DEL SUROESTE DE GUANAJUATO.");
+            $emisor_rfc=iconv('UTF-8', 'windows-1252',"UTS980928HM6");
+            $emisor_direccion=iconv('UTF-8', 'windows-1252',"CARR. VALLE - HUANIMARO KM. 1.2");
+            $emisor_col=iconv('UTF-8', 'windows-1252',"Col. SN 38400");
+            $emisor_ciudad=iconv('UTF-8', 'windows-1252',"VALLE DE SANTIAGO Guanajuato México.");
+            $emisor_tel=iconv('UTF-8', 'windows-1252',"Tel. (456) 6437180, 6436265, 6437184 EXT. 112");
+            $this->GeneratePDF->Image("./public/images/utsoe_fac.png", 5,$fila,35,20 );
+            $this->GeneratePDF->SetXY($col,$fila);
+            $this->GeneratePDF->MultiCell( 90, 4, mb_strtoupper($emisor_nombre), 0,"L");
+            $this->GeneratePDF->SetXY($col,$fila+8);
+            $this->GeneratePDF->MultiCell( 90, 4, mb_strtoupper($emisor_rfc), 0,"L");
+            $this->GeneratePDF->SetXY($col,$fila+12);
+            $this->GeneratePDF->MultiCell( 90, 4, mb_strtoupper($emisor_direccion), 0,"L");  
+            $this->GeneratePDF->SetXY($col,$fila+16);
+            $this->GeneratePDF->MultiCell( 90, 4, mb_strtoupper($emisor_col), 0,"L");
+            $this->GeneratePDF->SetXY($col,$fila+20);
+            $this->GeneratePDF->MultiCell( 90, 4, $emisor_ciudad, 0,"L");
+            $this->GeneratePDF->SetXY($col,$fila+24);
+            $this->GeneratePDF->MultiCell( 90, 4, mb_strtoupper($emisor_tel), 0,"L");
+            $this->GeneratePDF->Rect(130,$fila, 80, 50);
+            //RECUADRO PARA LOS DATOS DE FOLIO Y FACTURA
+            $this->GeneratePDF->Rect(130,$fila, 80, 50);
+            $fila=8;
+            $this->GeneratePDF->SetFont('helvetica', 'B', 9);
+            $this->GeneratePDF->SetXY(130,$fila);
+            $this->GeneratePDF->MultiCell(80, 4, mb_strtoupper("FACTURA NO.: 12122"), 0,"C");
+            $this->GeneratePDF->SetXY(130,$fila+4);
+            $this->GeneratePDF->MultiCell(80, 4, mb_strtoupper("FOLIO FISCAL (UIID):"), 0,"C");
+            $this->GeneratePDF->SetXY(130,$fila+8);
+            $this->GeneratePDF->MultiCell(80, 4, mb_strtoupper("34-3434-3434345"), 0,"C");            
+            $this->GeneratePDF->SetXY(130,$fila+12);
+            $this->GeneratePDF->MultiCell(80, 4, mb_strtoupper("NO. DE SERIE DEL CERTIFICADO DEL SAT:"), 0,"C");
+            $this->GeneratePDF->SetXY(130,$fila+16);
+            $this->GeneratePDF->MultiCell(80, 4, mb_strtoupper("34-3434-3434345"), 0,"C");               
+            $this->GeneratePDF->SetXY(130,$fila+20);
+            $this->GeneratePDF->MultiCell(80, 4, mb_strtoupper("NO. DE SERIE DEL CERTIFICADO DEL EMISOR"), 0,"C");
+            $this->GeneratePDF->SetXY(130,$fila+24);
+            $this->GeneratePDF->MultiCell(80, 4, mb_strtoupper("34-3434-3434345"), 0,"C");               
+            $this->GeneratePDF->SetXY(130,$fila+28);
+            $this->GeneratePDF->MultiCell(80, 4, iconv('UTF-8', 'windows-1252', "FECHA Y HORA DE CERTIFICACIÓN:"), 0,"C");
+            $this->GeneratePDF->SetXY(130,$fila+32);
+            $this->GeneratePDF->MultiCell(80, 4, mb_strtoupper("34-3434-3434345"), 0,"C");               
+            $this->GeneratePDF->SetXY(130,$fila+36);
+            $this->GeneratePDF->MultiCell(80, 4, iconv('UTF-8', 'windows-1252', "FECHA Y HORA DE EMISIÓN DE CFDI:"), 0,"C");
+            $this->GeneratePDF->SetXY(130,$fila+40);
+            $this->GeneratePDF->MultiCell(80, 4, mb_strtoupper("34-3434-3434345"), 0,"C");               
+            //DESCARGA EL ARCHIVO EN EL NAVEGADOR CON EL NOMBRE DE Cica_art_articulo.PDF
+            $this->GeneratePDF->Output('factura_1.pdf','I');
+            //$pdf->Output('factura_'.$_GET['id'].'.pdf','D');
+        }catch(Exception $e){
+            echo ($e->getMessage());    
+        }
+    }
 
 }//Fin mifacturacion

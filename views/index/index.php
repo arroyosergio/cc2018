@@ -27,10 +27,6 @@
               </ul>
             </div>
             
-            <div>
-				<h2  style="text-align:center; color:darkslateblue" class="feature-head wow fadeInDown animated"  data-wow-animation-name="fadeInDown" style="visibility: visible; animation-name: fadeInDown;">! La plataforma para la recepci&oacute;n de trabajos est&aacute; a su disposici&oacute;n!,
-          	     <br>haga su registro en el men&uacute; Autores. </h2>
-            </div>
              <div>
                 <h2 class="main_page_title feature-head wow fadeInDown animated"  data-wow-animation-name="fadeInDown" style="visibility: visible; animation-name: fadeInDown;">Congreso Interdisciplinario de Cuerpos Académicos </h2>
                 
