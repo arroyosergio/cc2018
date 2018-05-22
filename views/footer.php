@@ -29,6 +29,8 @@
                     </div>
                     <div class="col-lg-5 col-sm-5 wow fadeInUp animated" data-wow-duration="2.5s" data-wow-delay="4s" data-wow-animation-name="fadeInUp" style="visibility: visible; animation-duration: 2.5s; animation-delay: .9s; animation-name: fadeInUp;">
                           <!--<h4>Gobierno del Estado de Guanajuato</h4>-->
+                            <br/>
+                            
                           <table>
                                 <tr>
                                     <td>
@@ -44,16 +46,16 @@
                                         </div>        
                                     </td>
                                 </tr>
+                                
                                 <tr>
                                     <td>
                                         <div>
                                             <br/>
-                                            <img align="right" src="<?php echo URL.'public/images/logo2.png'; ?>" alt="" title=""height="500" width="500" class="img-fluid img-responsive" />
+                                            <img vspace="30" align="right" src="<?php echo URL.'public/images/logo2.png'; ?>" alt="" title=""height="500" width="500" class="img-fluid img-responsive" />
                                         </div>
                                         
                                     </td>
                                     <td>
-                                        
                                     </td>
                                     <td>
                                         <div>
@@ -62,7 +64,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                            </table>
+                        </table>
                     </div>
         		</div>
         	</div>

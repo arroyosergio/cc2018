@@ -80,9 +80,29 @@
                 </ul>
                 
                 
-                
-            
-                <h3 class="main_page_title feature-head wow fadeInDown animated"  data-wow-animation-name="fadeInDown" style="visibility: visible; animation-name: fadeInDown; font-size:1.5em"> <p class="text-left">Se invita a los académicos e investigadores de los siguientes paises</p></h3>
+                 <h3 class="main_page_title feature-head wow fadeInDown animated"  data-wow-animation-name="fadeInDown" style="visibility: visible; animation-name: fadeInDown; font-size:1.5em"><p class="text-left">Cuotas</p></h3>
+                 <p>
+                    <strong>Por trabajo</strong> (incluye un ponente):
+                    <br/>
+                    $2,600.00 del 21 de marzo al 30 de junio de 2018.
+                    <br/>
+                    $2,950.00 del 01 de julio al 18 de agosto de 2018.
+                </p>
+                 <p>
+                    <strong>Coautores, Estudiantes de Posgrado y Público en general:</strong>
+                    <br/>
+                    $2,200.00 del 21 de marzo al 30 de junio de 2018.
+                    <br/>
+                    $2,650.00 del 01 de julio al 18 de agosto de 2018.
+                 </p>
+                 <p>
+                    <strong>Certificación de obra SEP.</strong>
+                    <br/>
+                    $650.00 del 10 de abril al 31 de agosto del 2018.
+                    <br/>
+                    *La documentación solicitada se deberá entregar en original el día del evento.
+                 </p>
+               <h3 class="main_page_title feature-head wow fadeInDown animated"  data-wow-animation-name="fadeInDown" style="visibility: visible; animation-name: fadeInDown; font-size:1.5em"> <p class="text-left">Se invita a los académicos e investigadores de los siguientes paises</p></h3>
             
 				<div class="gallery animated fadeIn">
 
