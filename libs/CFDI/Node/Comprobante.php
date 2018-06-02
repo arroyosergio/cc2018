@@ -11,6 +11,9 @@
 
 namespace CFDI\Node;
 
+include('libs/CFDI/Common/Node.php');
+
+
 use CFDI\Common\Node;
 
 /**

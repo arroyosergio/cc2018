@@ -1,5 +1,11 @@
 <?php
-//NAMESPACE DE LA LIBRERIA PARA GENERER CFDI
+
+include('libs/CFDI/Node/Comprobante.php');
+include('libs/CFDI/Node/Receptor.php');
+include('libs/CFDI/Node/Emisor.php');
+include('libs/CFDI/Node/Concepto.php');
+
+
 use CFDI\CFDI;
 use CFDI\Node\Concepto;
 use CFDI\Node\Receptor;
@@ -182,63 +188,148 @@ class mifacturacion extends Controller {
     /*
      * Generar la factura.
      */
-     public function generarFactura(){
+     public function GenerarFactura(){
         $idArticulo = $_GET['id'];
+         
         $this->GenerarCfdiXml($idArticulo);
-        //GenerarCfdiXml($idArticulo);
+
          /*Persiste el nombre de los archivos de la factura y activa la bandera de factura previamente generada*/
          //$responseDB = registro_documentos_factura($idArticulo, $archivopdf, $archivoxml);
      }//Fin generarFactura
     
 
-    private function GenerarCfdiXml ($idArticulo){
+    /*
+     * Genera el documento XML del CFI
+     */
+    private function GenerarCfdiXml($idArticulo){
+        
         $path=DOCS.$idArticulo.'/';
         $name='factura.xml';
-        $this->GenerateCFDI->addData([
-            'Serie' => 'A',
-            'Folio' => 'A0101',
-            'Fecha' => '2017-06-17T03:00:00',
-            'FormaPago' => '01',
-            'NoCertificado' => '00000000000000000000',
-            'CondicionesDePago' => '',
-            'Subtotal' => '',
-            'Descuento' => '0.00',
-            'Moneda' => 'MXN',
-            'TipoCambio' => '1.0',
-            'Total' => '',
-            'TipoDeComprobante' => 'I',
-            'MetodoPago' => 'PUE',
-            'LugarExpedicion' => '64000',
-        ]);  
+             
+        $this->GenerarDatosComprobante($idArticulo);
+        $this->GenerarDatosEmisor();
+        $this->GenerarDatosReceptor($idArticulo);
+        $this->GenerarDatosConceptos($idArticulo);    
         
-        $this->GenerateCFDI->add(new Emisor([
-            'Rfc' => 'XAXX010101000',
-            'Nombre' => 'Florería SA de CV',
-            'RegimenFiscal' => '601',
-        ]));
-        $this->GenerateCFDI->add(new Receptor([
-            'Rfc' => 'XEXX010101000',
-            'Nombre' => 'Orlando Charles',
-            'ResidenciaFiscal' => 'USA',
-            'NumRegIdTrib' => '121585958',
-            'UsoCFDI' => 'G01',
-        ]));
-        $this->GenerateCFDI->add(new Concepto([
-            'ClaveProdServ' => '10317352',
-            'NoIdentificacion' => 'UT421510',
-            'Cantidad' => '12',
-            'ClaveUnidad' => 'H87',
-            'Unidad' => 'Pieza',
-            'Descripcion' => 'Arreglo de 12 tulipanes rojos recién cortados',
-            'ValorUnitario' => '66.00',
-            'Importe' => '792.00',
-            'Descuento' => '5.00',
-        ]));
         $xml=$this->GenerateCFDI->getXML();
         $this->GenerateCFDI->save($path, $name);
-        //header('Content-Type: text/xml');
-        //echo  ($xml);
-    
-    }
+        
+        header('Content-Type: text/xml');
+        echo  ($xml);
+    }//Fin GenerarCfdiXml
 
+    /*
+     * Genera los datos generales del XML del CFI
+     */
+    private function GenerarDatosComprobante($idArticulo){
+        
+        //Recuperamos los datos del deposito.
+        $responseDB = $this->model->get_datos_deposito($idArticulo);
+        if (!$responseDB) {
+            return 'no-pago';
+        }
+        
+        //Tomamos la fecha actual del sistema, como fecha para la factura
+        $fecha_actual = new DateTime('now', new DateTimeZone('America/Mexico_City'));
+        $emisiondate = $fecha_actual->format('Y-m-d').'T'.$fecha_actual->format('h:i:s');
+        
+        //Generamos los datos del comprobante.
+        $datos =[
+            'Serie' => '',                          //opcional
+            'Folio' => '',                          //opcional
+            'Fecha' => $emisiondate,                //Cambiar requerido
+            'FormaPago' => '03',                    //Requerido
+            'NoCertificado' => '',                  //Requerido
+            'CondicionesDePago' => 'I',             //opcional
+            'Subtotal' => number_format($responseDB['dep_monto'],2,'.',''), //requerido
+            'Moneda' => 'MXN',                      //requerido
+            'Total' => number_format($responseDB['dep_monto'],2,'.',''),    //Requerido
+            'TipoDeComprobante' => 'I',             //requerido
+            'MetodoPago' => 'PUE',                  //opcional
+            'LugarExpedicion' => '38400',           //Requerido, CP de valle, tomado del ejemplo de factura
+        ];
+        
+        //Generar el comprobante.
+        $this->GenerateCFDI->addData($datos);  
+    }//Fin GenerarDatosComprobante
+    
+    
+    /*
+     * Genera los datos del emisor del XML del CFI
+     */
+    private function GenerarDatosEmisor(){
+        $emisor= [
+            'Rfc' => 'UTS980928HM6',
+            'Nombre' => 'Universidad Tecnologica del Suroeste de Guanajuato',
+            'RegimenFiscal' => '603',       //603 Personas Morales con Fines no Lucrativos
+        ];
+        $this->GenerateCFDI->add(new Emisor($emisor));
+
+    }//Fin GenerarDatosEmisor
+    
+    
+    /*
+     * Genera los datos del receptor del XML del CFI
+     */
+    private function GenerarDatosReceptor($idArticulo){
+        $responseDB = $this->model->get_datos_facturacion($idArticulo);
+        
+        if (!$responseDB) {
+            return 'no-datos-facturacion';
+        }
+        
+        $domicilio = utf8_encode($responseDB['fac_calle']). ' ' . utf8_encode($responseDB['fac_numero']) . ' ' . utf8_encode($responseDB['fac_colonia']) . ' ' . utf8_encode($responseDB['fac_municipio']). ' '. utf8_encode($responseDB['fac_estado']) . ' ' .utf8_encode($responseDB['fac_cp']);
+        
+        $receptor = [
+            'Rfc' => $responseDB['fac_rfc'],
+            'Nombre' => $responseDB['fac_razon_social'],
+            'ResidenciaFiscal' => $domicilio,
+            'NumRegIdTrib' => '121585958',
+            'UsoCFDI' => 'G01',
+        ];
+        
+        $this->GenerateCFDI->add(new Receptor($receptor));
+    }//Fin GenerarDatosReceptor
+    
+    
+    /*
+     * Genera los datos de los conceptos del XML del CFI
+     */
+    private function GenerarDatosConceptos($idArticulo){
+        //Recuperamos los datos de asistencia.
+        $responseDB = $this->model->get_asistentes_articulo($idArticulo);
+                
+        if (!$responseDB) {
+            return 'no-asistentes';
+        }
+        
+        foreach ($responseDB as $asistente) {
+            $descripcion = "INSCRIPCION AL CONGRESO INTERDISCIPLINARIO DE CUERPOS ACADEMICOS A CELEBRARSE EN LA UNIVERSIDAD TECNOLOGICA DEL SUROESTE DE GUANAJUATO LOS DIAS 20 Y 21 DE SEPTIEMBRE DE 2018 ";
+
+            if($asistente['asi_tipo'] == 'ponente'){
+                //Calculo del costo, depende la fecha
+                $cuota = 2900.00;
+                $descripcion .= "Ponente: ";
+            }else{
+                //Calculo del costo, depende la fecha
+                $cuota = 2600.00;
+                $descripcion .= "General: ";
+            }
+            $descripcion .= utf8_encode($asistente['asi_nombre']);
+            $descripcion .= " ID: " . $idArticulo;
+            
+            $concepto = [
+                'ClaveProdServ' => '01010101',              //Clave, no existen en el catalogo
+                'Cantidad' => '1.00',                       //
+                'ClaveUnidad' => 'H87',                     //Por definir
+                'Unidad' => 'NA',                        //Este atributo es opcional.
+                'ValorUnitario' => number_format($cuota,2,'.',''),
+                'Importe' => number_format($cuota,2,'.',''),
+                'Descripcion' => $descripcion,
+            ];
+            
+            $this->GenerateCFDI->add(new Concepto($concepto));                  
+        }         
+    }//Fin GenerarDatosConceptos
+    
 }//Fin mifacturacion

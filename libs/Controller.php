@@ -71,10 +71,13 @@ class Controller {
 	public function loadXmlCFDI() {
 		$cer = file_get_contents('libs/CFDI/csd/CSD01_AAA010101AAA.cer.pem');
         $key = file_get_contents('libs/CFDI/csd/CSD01_AAA010101AAA.key.pem');
+        
 		$classCFDI = 'libs/CFDI/CFDI.php';
 		if (file_exists($classCFDI)) {
 			require_once $classCFDI;
+            
 			$this->GenerateCFDI = new CFDI($cer,$key);
+            
 		}
     }
     

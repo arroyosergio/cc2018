@@ -113,6 +113,36 @@ class mifacturacion_Model extends Model {
      }//Fin get_datos_facturacion
     
     /*
+     * Recupera los asistentes de un articulo.
+     */
+     public function get_asistentes_articulo($idArticulo) {
+         //Armando de la sentencia sql
+          $query = "SELECT ".
+                         "asi_id,".
+                         "asi_nombre,".
+                         "asi_institucion,".
+                         "asi_tipo ".
+                    "FROM ".
+                         "tbl_asistentes ".
+                    "WHERE ".
+                         "art_id=".$idArticulo;
+          
+         //Preparacion y ejecucion de la sentencia
+          $sth = $this->db->prepare($query);
+          $sth->setFetchMode(PDO::FETCH_ASSOC);
+          $sth->execute();
+          $count = $sth->rowCount();
+          $data = NULL;
+          if ($count > 0) {
+               $data = $sth->fetchAll();
+          } else {
+               $data = FALSE;
+          }
+          return $data;
+     }//Fin get_asistentes_articulo
+    
+    
+    /*
      * Recupera los documentos electronicos de facturacion
      * $idArticulo, identificador del articulo al que pertenecen los datos 
      * de facturacion.
