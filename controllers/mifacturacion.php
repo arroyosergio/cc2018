@@ -4,7 +4,7 @@ include('libs/CFDI/Node/Comprobante.php');
 include('libs/CFDI/Node/Receptor.php');
 include('libs/CFDI/Node/Emisor.php');
 include('libs/CFDI/Node/Concepto.php');
-
+  
 
 use CFDI\CFDI;
 use CFDI\Node\Concepto;
@@ -186,36 +186,61 @@ class mifacturacion extends Controller {
     }//Fin getDatosFacturacion
     
     /*
+     *  
+     */
+    private function registro_documentos_factura($idArticulo, $nameXml, $namePdf ){
+        
+    }//Fin registro_documentos_factura
+    
+    /*
      * Generar la factura.
      */
      public function GenerarFactura(){
         $idArticulo = $_GET['id'];
          
-        $this->GenerarCfdiXml($idArticulo);
-
+        $path=DOCS.$idArticulo.'/';
+        $nameXml='factura.xml';
+        $namePdf='factura.pdf';
+         
+        $correcto = $this->GenerarCfdiXml($idArticulo, $path, $nameXml);
+        if(!$correcto){
+            return false;
+        }
+         
+        $correcto = $this->TimbrarDocumento($path, $nameXml);
+        if(!$correcto){
+            return false;
+        }
+         
          /*Persiste el nombre de los archivos de la factura y activa la bandera de factura previamente generada*/
-         //$responseDB = registro_documentos_factura($idArticulo, $archivopdf, $archivoxml);
+        $correcto = $this->model->registro_documentos_factura($idArticulo, $nameXml, $namePdf);
+        if(!$correcto){
+            return false;
+        }
+        
+        echo 'true';
      }//Fin generarFactura
     
 
     /*
      * Genera el documento XML del CFI
      */
-    private function GenerarCfdiXml($idArticulo){
-        
-        $path=DOCS.$idArticulo.'/';
-        $name='factura.xml';
-             
-        $this->GenerarDatosComprobante($idArticulo);
-        $this->GenerarDatosEmisor();
-        $this->GenerarDatosReceptor($idArticulo);
-        $this->GenerarDatosConceptos($idArticulo);    
-        
-        $xml=$this->GenerateCFDI->getXML();
-        $this->GenerateCFDI->save($path, $name);
-        
-        header('Content-Type: text/xml');
-        echo  ($xml);
+    private function GenerarCfdiXml($idArticulo, $path, $name){
+        try {
+            
+            $this->GenerarDatosComprobante($idArticulo);
+            $this->GenerarDatosEmisor();
+            $this->GenerarDatosReceptor($idArticulo);
+            $this->GenerarDatosConceptos($idArticulo);    
+            $xml=$this->GenerateCFDI->getXML();
+            $this->GenerateCFDI->save($path, $name);
+            
+        } catch (Exception $exception) {
+            echo "# del error: " . $exception->getCode() . "\n";
+            echo "Descripción del error: " . $exception->getMessage() . "\n";
+            return false;
+        }
+        return true;
     }//Fin GenerarCfdiXml
 
     /*
@@ -230,18 +255,19 @@ class mifacturacion extends Controller {
         }
         
         //Tomamos la fecha actual del sistema, como fecha para la factura
-        $fecha_actual = new DateTime('now', new DateTimeZone('America/Mexico_City'));
-        $emisiondate = $fecha_actual->format('Y-m-d').'T'.$fecha_actual->format('h:i:s');
+        date_default_timezone_set('America/Mexico_City');
+        $emisiondate = date('Y-m-d_H:i:s');
+        $emisiondate = str_replace("_", "T", $emisiondate);
         
         //Generamos los datos del comprobante.
         $datos =[
-            'Serie' => '',                          //opcional
-            'Folio' => '',                          //opcional
+            'Serie' => 'A',                          //opcional
+            'Folio' => 'A001',                          //opcional
             'Fecha' => $emisiondate,                //Cambiar requerido
             'FormaPago' => '03',                    //Requerido
-            'NoCertificado' => '',                  //Requerido
+            'NoCertificado' => '30001000000300023708',                  //Requerido
             'CondicionesDePago' => 'I',             //opcional
-            'Subtotal' => number_format($responseDB['dep_monto'],2,'.',''), //requerido
+            'SubTotal' => number_format($responseDB['dep_monto'],2,'.',''), //requerido
             'Moneda' => 'MXN',                      //requerido
             'Total' => number_format($responseDB['dep_monto'],2,'.',''),    //Requerido
             'TipoDeComprobante' => 'I',             //requerido
@@ -252,7 +278,6 @@ class mifacturacion extends Controller {
         //Generar el comprobante.
         $this->GenerateCFDI->addData($datos);  
     }//Fin GenerarDatosComprobante
-    
     
     /*
      * Genera los datos del emisor del XML del CFI
@@ -267,7 +292,6 @@ class mifacturacion extends Controller {
 
     }//Fin GenerarDatosEmisor
     
-    
     /*
      * Genera los datos del receptor del XML del CFI
      */
@@ -281,7 +305,7 @@ class mifacturacion extends Controller {
         $domicilio = utf8_encode($responseDB['fac_calle']). ' ' . utf8_encode($responseDB['fac_numero']) . ' ' . utf8_encode($responseDB['fac_colonia']) . ' ' . utf8_encode($responseDB['fac_municipio']). ' '. utf8_encode($responseDB['fac_estado']) . ' ' .utf8_encode($responseDB['fac_cp']);
         
         $receptor = [
-            'Rfc' => $responseDB['fac_rfc'],
+            'Rfc' => 'AAA010101AAA',  // $responseDB['fac_rfc'],
             'Nombre' => $responseDB['fac_razon_social'],
             'ResidenciaFiscal' => $domicilio,
             'NumRegIdTrib' => '121585958',
@@ -290,7 +314,6 @@ class mifacturacion extends Controller {
         
         $this->GenerateCFDI->add(new Receptor($receptor));
     }//Fin GenerarDatosReceptor
-    
     
     /*
      * Genera los datos de los conceptos del XML del CFI
@@ -332,4 +355,48 @@ class mifacturacion extends Controller {
         }         
     }//Fin GenerarDatosConceptos
     
+    /*
+     * Timbre el CFDI, a través del WS de SAT.
+     */
+    private function TimbrarDocumento($path, $name){
+        //parametros para conexion al Webservice (URL de Pruebas)
+        $wsdl_url = "https://staging.ws.timbox.com.mx/timbrado_cfdi33/wsdl";
+        $wsdl_usuario = "AAA010101000";
+        $wsdl_contrasena = "h6584D56fVdBbSmmnB";
+
+        
+        // convertir la cadena del xml en base64
+        $ruta_xml = $path . $name;
+        $documento_xml = file_get_contents($ruta_xml);
+        $xml_base64 = base64_encode($documento_xml);
+
+        
+        
+        //crear un cliente para hacer la petición al WS
+        $cliente = new SoapClient($wsdl_url, array(
+            'trace' => 1,
+            'use' => SOAP_LITERAL,
+        ));
+
+        //parametros para llamar la funcion timbrar_cfdi
+        $parametros = array(
+            "username" => $wsdl_usuario,
+            "password" => $wsdl_contrasena,
+            "sxml" => $xml_base64,
+        );
+
+        try {
+            //llamar la funcion timbrar_cfdi
+            $respuesta = $cliente->__soapCall("timbrar_cfdi", $parametros);
+
+            //Guardar el xml timbrado
+            file_put_contents($path."factura_timbrada.xml", $respuesta->xml);
+            return true;
+        } catch (Exception $exception) {
+            //imprimir los mensajes de la excepcion
+            echo "# del error: " . $exception->getCode() . "\n";
+            echo "Descripción del error: " . $exception->getMessage() . "\n";
+            return false;
+        }
+    }//Fin TimbrarDocumento
 }//Fin mifacturacion
