@@ -176,8 +176,8 @@ class mifacturacion extends Controller {
             } else {
                 $documentos = array(
                     'generada' => $responseDB['doc_factura_creada'],
-                    'archivoxml' => $responseDB['doc_factura_xml'],
-                    'archivopdf' => $responseDB['doc_factura_pdf']
+                    'archivoxml' => URL.'docs/'.$idArticulo.'/'.$responseDB['doc_factura_xml'],
+                    'archivopdf' => URL.'docs/'.$idArticulo.'/'.$responseDB['doc_factura_pdf']
                 );
                 $response = $documentos;
             }
@@ -185,28 +185,24 @@ class mifacturacion extends Controller {
         echo json_encode($response);
     }//Fin getDatosFacturacion
     
-    /*
-     *  
-     */
-    private function registro_documentos_factura($idArticulo, $nameXml, $namePdf ){
-        
-    }//Fin registro_documentos_factura
     
     /*
      * Generar la factura.
      */
      public function GenerarFactura(){
-        $idArticulo = $_GET['id'];
+        $idArticulo = $_POST['id'];
          
         $path=DOCS.$idArticulo.'/';
         $nameXml='factura.xml';
         $namePdf='factura.pdf';
          
+        //Genera el documento xml del cfdi
         $correcto = $this->GenerarCfdiXml($idArticulo, $path, $nameXml);
         if(!$correcto){
             return false;
         }
          
+        //Timbrar el document cfdi, via el pack 
         $correcto = $this->TimbrarDocumento($path, $nameXml);
         if(!$correcto){
             return false;
@@ -355,7 +351,6 @@ class mifacturacion extends Controller {
         }         
     }//Fin GenerarDatosConceptos
     
-
     /*
      * Timbre el CFDI, a través del WS de SAT.
      */
@@ -385,23 +380,26 @@ class mifacturacion extends Controller {
         );
 
         try {
+            
             //llamar la funcion timbrar_cfdi
             $respuesta = $cliente->__soapCall("timbrar_cfdi", $parametros);
 
             //Guardar el xml timbrado
             file_put_contents($path."factura_timbrada.xml", $respuesta->xml);
+            
             return true;
         } catch (Exception $exception) {
             //imprimir los mensajes de la excepcion
-            echo "# del error: " . $exception->getCode() . "\n";
-            echo "Descripción del error: " . $exception->getMessage() . "\n";
+            //echo "# del error: " . $exception->getCode() . "<br/>";
+            echo "Descripción del error: " . $exception->getMessage() . "<br/>";
             return false;
         }
     }//Fin TimbrarDocumento
     
     
-    
-
+    /*
+     * Pon comentario aquí.
+     */
     function generaFacturaPDF() {
         try{
        		//$responseDB = $this->model->get_autores_articulo($_GET['id']);

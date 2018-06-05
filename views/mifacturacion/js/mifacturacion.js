@@ -1,3 +1,5 @@
+var idArticulo;
+
 $(document).ready(function () {
     activarOpcionMenu();
     $('.dataTable').DataTable({
@@ -16,10 +18,27 @@ $(document).ready(function () {
 });
 
 $('.detalles').click(function () {
+    idArticulo = $(this).attr('deposito');
     getDatosDeposito($(this).attr('deposito'));
     getDatosFacturacion($(this).attr('deposito'));
     getDocumentosFacturacion($(this).attr('deposito'));
     $('#modal-detalles-facturacion').modal('show');
+});
+
+$('#generar').click(function () {
+    $('#modal-detalles-facturacion').css('cursor', 'wait');
+    $('#generar').css('cursor', 'wait');
+    
+    $.post('mifacturacion/generarFactura', {id: idArticulo}, function (response) {
+        if(response == 'true'){
+            getDocumentosFacturacion(idArticulo);
+            mostrarAlerta('success', 'La factura fue generada éxitosamente.');
+        }else{
+            mostrarAlerta('error', response);
+        }
+        $('#modal-detalles-facturacion').css('cursor', 'pointer');
+        $('#generar').css('cursor', 'pointer');        
+    });
 });
 
 function getDatosDeposito(idArticulo) {
@@ -93,3 +112,5 @@ function mostrarAlerta(tipo, mensaje) {
             break;
     }
 }
+
+
