@@ -5,12 +5,14 @@ include('libs/CFDI/Node/Receptor.php');
 include('libs/CFDI/Node/Emisor.php');
 include('libs/CFDI/Node/Concepto.php');
   
-
 use CFDI\CFDI;
 use CFDI\Node\Concepto;
 use CFDI\Node\Receptor;
 use CFDI\Node\Emisor;
 
+/*
+ * Modulo de facturacion del autor.
+ */
 class mifacturacion extends Controller {
     
     /*
@@ -185,7 +187,6 @@ class mifacturacion extends Controller {
         echo json_encode($response);
     }//Fin getDatosFacturacion
     
-    
     /*
      * Generar la factura.
      */
@@ -217,7 +218,6 @@ class mifacturacion extends Controller {
         echo 'true';
      }//Fin generarFactura
     
-
     /*
      * Genera el documento XML del CFI
      */
@@ -355,11 +355,6 @@ class mifacturacion extends Controller {
      * Timbre el CFDI, a través del WS de SAT.
      */
     private function TimbrarDocumento($path, $name){
-        //parametros para conexion al Webservice (URL de Pruebas)
-        $wsdl_url = "https://staging.ws.timbox.com.mx/timbrado_cfdi33/wsdl";
-        $wsdl_usuario = "AAA010101000";
-        $wsdl_contrasena = "h6584D56fVdBbSmmnB";
-
         
         // convertir la cadena del xml en base64
         $ruta_xml = $path . $name;
@@ -367,15 +362,15 @@ class mifacturacion extends Controller {
         $xml_base64 = base64_encode($documento_xml);        
         
         //crear un cliente para hacer la petición al WS
-        $cliente = new SoapClient($wsdl_url, array(
+        $cliente = new SoapClient(WSDL_URL, array(
             'trace' => 1,
             'use' => SOAP_LITERAL,
         ));
 
         //parametros para llamar la funcion timbrar_cfdi
         $parametros = array(
-            "username" => $wsdl_usuario,
-            "password" => $wsdl_contrasena,
+            "username" => WSDL_USUARIO,
+            "password" => WSDL_CONTRASENA,
             "sxml" => $xml_base64,
         );
 
@@ -395,7 +390,6 @@ class mifacturacion extends Controller {
             return false;
         }
     }//Fin TimbrarDocumento
-    
     
     /*
      * Pon comentario aquí.
