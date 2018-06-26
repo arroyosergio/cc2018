@@ -20,8 +20,8 @@ define('WSDL_CONTRASENA','h6584D56fVdBbSmmnB');
 * Configuraciones de las fechas del sistema.
 */
 define('FECHAAPERTURA',"2018-04-01");
-define('FECHACIERRE',"2018-05-20");
-define('FECHALIMITEDESCUENTOGENERAL',"2018-05-20");
+define('FECHACIERRE',"2018-06-30");
+define('FECHALIMITEDESCUENTOGENERAL',"2018-06-30");
 
 /*
 * 
@@ -37,7 +37,6 @@ define('CUOTAAUTORDESCUENTO',2600.0);
 define('CUOTAAUTOR',2950.0);
 define('CUOTAPUBLICODESCUENTO',2200.00);
 define('CUOTAPUBLICO',2650.0);
-
 
 
 

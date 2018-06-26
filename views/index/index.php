@@ -26,10 +26,16 @@
                 </li>
               </ul>
             </div>
-            
+            <br>
+            <div class="alert alert-info alert-dismissible" role="alert">
+                <button type="button" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <marquee><p style="font-size: 4rem">Se extiende la recepci&oacute;n de trabajos hasta el 30 de junio de 2018.</p></marquee>
+            </div>
              <div>
                 <h2 class="main_page_title feature-head wow fadeInDown animated"  data-wow-animation-name="fadeInDown" style="visibility: visible; animation-name: fadeInDown;">Congreso Interdisciplinario de Cuerpos Académicos </h2>
                 
+                <h3 class="main_page_title feature-head wow fadeInDown animated"  data-wow-animation-name="fadeInDown" style="visibility: visible; animation-name: fadeInDown;"> Se celebrará los días 20 y 21 de septiembre en el Auditorio y Centro de Convenciones de la ciudad de Guanajuato, Gto. </h3>
+
                  <p>El Comité organizador del CICA se complace en invitarle en su sexta edición a ser parte de este gran evento a impulsar la colaboración entre académicos y cientificos, fortaleciendo la formación de cuerpos académicos y grupos de investigación de Instituciones de Educación Superior de índole nacional e internacional.</p>
                 
                 <h3 class="main_page_title feature-head wow fadeInDown animated"  data-wow-animation-name="fadeInDown" style="visibility: visible; animation-name: fadeInDown; font-size:1.5em"> <p class="text-left">Objetivo</p></h3>
@@ -80,16 +86,16 @@
                  <p>
                     <strong>Por trabajo</strong> (incluye un ponente):
                     <br/>
-                    $2,600.00 del 21 de marzo al 30 de junio de 2018.
+                    $2,600.00 del 21 de marzo al 13 de julio de 2018.
                     <br/>
-                    $2,950.00 del 01 de julio al 18 de agosto de 2018.
+                    $2,950.00 del 14 de julio al 18 de agosto de 2018.
                 </p>
                  <p>
                     <strong>Coautores, Estudiantes de Posgrado y Público en general:</strong>
                     <br/>
-                    $2,200.00 del 21 de marzo al 30 de junio de 2018.
+                    $2,200.00 del 21 de marzo al 13 de julio de 2018.
                     <br/>
-                    $2,650.00 del 01 de julio al 18 de agosto de 2018.
+                    $2,650.00 del 14 de julio al 18 de agosto de 2018.
                  </p>
                  <p>
                     <strong>Certificación de obra SEP.</strong>

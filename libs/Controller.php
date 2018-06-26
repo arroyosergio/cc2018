@@ -36,7 +36,7 @@ class Controller {
 				//SE INDICA EL HOSTING  
 				$this->mail->Host = HOST_MAIL;
 				//PORT FOR GODDADY
-				$this->mail->Port = 80;	
+				$this->mail->Port = 80; //465;	
 				//ONLY FOR GODADDY
 				$this->mail->SMTPAutoTLS = false;
 				//SET SMTPAUTH TRUE FOR GODDADY 
@@ -44,6 +44,7 @@ class Controller {
 				//ONLY FOR GODDADY
 				$this->mail->SMTPSecure   = false;
 				$this->mail->IsHTML(true);
+				//$this->SMTPSecure='ssl'; //only if using port 465
 				// ENABLE VERBOSe DEBUG OUTPUT
 				// 1 CLIENT SIDE
 				// 2 BOTH SIDE
@@ -71,13 +72,10 @@ class Controller {
 	public function loadXmlCFDI() {
 		$cer = file_get_contents('libs/CFDI/csd/CSD01_AAA010101AAA.cer.pem');
         $key = file_get_contents('libs/CFDI/csd/CSD01_AAA010101AAA.key.pem');
-        
 		$classCFDI = 'libs/CFDI/CFDI.php';
 		if (file_exists($classCFDI)) {
 			require_once $classCFDI;
-            
 			$this->GenerateCFDI = new CFDI($cer,$key);
-            
 		}
     }
     
