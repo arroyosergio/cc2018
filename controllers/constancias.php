@@ -116,45 +116,51 @@ class constancias extends Controller {
 				$pdf->SetMargins(10, 10 , 10);
 				#Establecemos el margen inferior:
 				$pdf->SetAutoPageBreak(true,15);
+				//SE AGREGA UNA PAGINA AL ARCHIVO PDF
 				$pdf->AddPage();
 				//COLOCA EL PRIMER AUTOR
 				$pdf->SetFontSize(20);
-				$fila=138;
+				$fila=118;
 				$nombre="";
 				$articulo="";
+
 				foreach ($responseDB as $autor) {
+					// SE COLOCA EL CURSOR EN LAS COORDINADAS x=10,y=$FILA
 					$pdf->SetXY(10,$fila);
 					$nombre=$autor["autNombre"].' '.$autor['autApellidoPaterno'].' '.$autor['autApellidoMaterno'];
 					//HACE LA CONVERSION PARA CARACTERES ESPECIALES
-					$nombre= iconv('UTF-8', 'windows-1252', $nombre);
+					$nombre= iconv('UTF-8','windows-1252', $nombre);
+					//CONVIERTE EL NOMBRE DEL ARTCICULO EN MAYUSCULAS
 					$articulo= mb_strtoupper($autor["artNombre"]);
-					$articulo= iconv('UTF-8', 'windows-1252', $articulo);
-					$pdf->Cell(200,10,mb_strtoupper($nombre),0,1,'C');
-					$fila=$fila+6;
+					//TRANSFORMA EL NOMBRE DEL ART. A FORMATO UTF-8
+					$articulo= iconv('UTF-8','windows-1252', $articulo);
+					//COLOCA EL NOMBRE DEL CURSOR CENTRADO Y SIN BORDE
+					$pdf->Cell(200,10,$nombre,0,1,'C');
+					$fila=$fila+7;
 				}
 				$pdf->SetFontSize(11);
 				//SE COLOCA EN POSICION PARA EL NOMBRE DE LA PONENCIA
-				if(strlen($articulo)>60){
+				if(strlen($articulo)>115){
 					$arrayArt = explode(" ", $articulo);
 					$total_articulo="";
-					$col=166;
+					$fila_Art=154;
 					for($i=0;$i<count($arrayArt);$i++){
 						$total_articulo .=$arrayArt[$i]." ";
-						if(strlen($total_articulo)>=60){
-							$pdf->SetXY(17,$col);
-							$pdf->Cell(10,10,mb_strtoupper($total_articulo),0,1);
+						if(strlen($total_articulo)>=115){
+							$pdf->SetXY(33,$fila_Art);
+							$pdf->Cell(10,10,$total_articulo,0,1);
 							$total_articulo="";
-							$col+=3;
+							$fila_Art+=4;
 						}
 					}
 					if(strlen($total_articulo)>=1){
-					   $pdf->SetXY(17,$col);
-					   $pdf->Cell(10,10,mb_strtoupper($total_articulo),0,1);
+					   $pdf->SetXY(33,$fila_Art);
+					   $pdf->Cell(10,10,$total_articulo,0,1);
 					}
 
 				}else {
-					$pdf->SetXY(17,168);
-					$pdf->Cell(10,10,mb_strtoupper($articulo),0,1);
+					$pdf->SetXY(33,155);
+					$pdf->Cell(10,10,$articulo,0,1);
 				}
 				//DESCARGA EL ARCHIVO EN EL NAVEGADOR CON EL NOMBRE DE Cica_art_articulo.PDF
      		   	//$pdf->Output('Const_Cica2018.pdf','D');
@@ -175,8 +181,8 @@ class PDF extends FPDF
 	{
 		// Logo
 		$this->Image('public/img/constancia.jpg', 0, 0, $this->w, $this->h);
-		$this->AddFont('Sansation', '', 'Sansation_Bold.php');
-		$this->SetFont('Sansation', '', 12);
+		$this->AddFont('big_noodle_titling', '', 'big_noodle_titling.php');
+		$this->SetFont('big_noodle_titling', '', 12);
 
 	}
 }

@@ -54,21 +54,21 @@ class imprimir_constancia extends Controller{
 		   	$pdf->AddPage();
 		   	//COLOCA EL PRIMER AUTOR
 		   	$pdf->SetFontSize(20);
-		   	$fila=138;
+		   	$fila=118;
 		   	//AUTOR 1
 		   	$pdf->SetXY(10,$fila);                                       //SE COLOCA EL CURSOR EN LA POSICION DESEADA
 		   	//$nombreAutor1= iconv('UTF-8', 'windows-1252', $nombreAutor1);//HACE LA CONVERSION PARA CARACTERES ESPECIALES
 		   	$pdf->Cell(200,10,utf8_decode(mb_strtoupper($nombreAutor1)),0,1,'C');
 		   	//AUTOR 2
-		   	$pdf->SetXY(10,$fila+6);                                       //SE COLOCA EL CURSOR EN LA POSICION DESEADA
+		   	$pdf->SetXY(10,$fila+7);                                       //SE COLOCA EL CURSOR EN LA POSICION DESEADA
 		   	//$nombreAutor2= iconv('UTF-8', 'windows-1252', $nombreAutor2);//HACE LA CONVERSION PARA CARACTERES ESPECIALES
 		   	$pdf->Cell(200,10,utf8_decode(mb_strtoupper($nombreAutor2)),0,1,'C');
 		   	//AUTOR NAME 3
-		   	$pdf->SetXY(10,$fila+12);                                       //SE COLOCA EL CURSOR EN LA POSICION DESEADA
+		   	$pdf->SetXY(10,$fila+14);                                       //SE COLOCA EL CURSOR EN LA POSICION DESEADA
 		   	//$nombreAutor3= iconv('UTF-8', 'windows-1252', $nombreAutor3);//HACE LA CONVERSION PARA CARACTERES ESPECIALES
 		   	$pdf->Cell(200,10,utf8_decode(mb_strtoupper($nombreAutor3)),0,1,'C');
 		   	//AUTOR NAME 4
-		   	$pdf->SetXY(10,$fila+18);                                       //SE COLOCA EL CURSOR EN LA POSICION DESEADA
+		   	$pdf->SetXY(10,$fila+21);                                       //SE COLOCA EL CURSOR EN LA POSICION DESEADA
 		   	//$nombreAutor4= iconv('UTF-8', 'windows-1252', $nombreAutor4);//HACE LA CONVERSION PARA CARACTERES ESPECIALES
 		   	$pdf->Cell(200,10,utf8_decode(mb_strtoupper($nombreAutor4)),0,1,'C');
 		   	//ARTICLE NAME
@@ -76,26 +76,27 @@ class imprimir_constancia extends Controller{
 		   	$nombreArticulo = utf8_decode(mb_strtoupper($nombreArticulo));
 		   	$pdf->SetFontSize(11);
 		   	//SE COLOCA EN POSICION PARA EL NOMBRE DE LA PONENCIA
-		   	if(strlen($nombreArticulo)>60){
+			$row_art=154;   
+			if(strlen($nombreArticulo)>115){
 		   		$arrayArt = explode(" ",$nombreArticulo);
 		   		$total_articulo="";
-		   		$col=166;
+		   		
 		   		for($i=0;$i<count($arrayArt);$i++){
 		   			$total_articulo .=$arrayArt[$i]." ";
-		   			if(strlen($total_articulo)>=60){
-		   				$pdf->SetXY(17,$col); //160
-		   				$pdf->Cell(10,10,mb_strtoupper($total_articulo),0,1);
+		   			if(strlen($total_articulo)>=115){
+		   				$pdf->SetXY(33,$row_art); //160
+		   				$pdf->Cell(10,10,$total_articulo,0,1);
 		   				$total_articulo="";
-		   				$col+=3;
+		   				$row_art+=4;
 		   			}
 		   		}
 		   		if(strlen($total_articulo)>=1){
-		   			$pdf->SetXY(17,$col);//154
-		   			$pdf->Cell(10,10,mb_strtoupper($total_articulo),0,1);
+		   			$pdf->SetXY(33,$row_art);//154
+		   			$pdf->Cell(10,10,$total_articulo,0,1);
 		   		}
 		   	
 		   	}else {
-		   		$pdf->SetXY(17,168);//152
+		   		$pdf->SetXY(33,$row_art);//152
 		   		$pdf->Cell(10,10,$nombreArticulo,0,1);
 		   	}
 		   	//DESCARGA EL ARCHIVO EN EL NAVEGADOR CON EL NOMBRE DE Cica_art_articulo.PDF
@@ -113,8 +114,7 @@ class PDF extends FPDF
 	{
 		// Logo
 		$this->Image('public/img/constancia.jpg', 0, 0, $this->w, $this->h);
-		$this->AddFont('Sansation', '', 'Sansation_Bold.php');
-		$this->SetFont('Sansation', '', 12);
-
+		$this->AddFont('big_noodle_titling', '', 'big_noodle_titling.php');
+		$this->SetFont('big_noodle_titling', '', 12);
 	}
 }

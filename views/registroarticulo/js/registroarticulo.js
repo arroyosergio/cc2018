@@ -303,7 +303,7 @@ $('#form-registro-articulo').submit(function () {
 			toastr.success("El Articulo se actualizo correctamente.");
 			if($('#tipo_operacion').val()=="actualizar"){
 				$("#contenedor-archivo-art").removeClass('hidden');
-				var idArticulo=$("#id-articulo-registro").val();
+                var idArticulo=$("#id-articulo-registro").val();
 				$("#id-articulo-file").val(idArticulo);
 				$("#id-articulo-autores").val(idArticulo);
 				$.post('registroarticulo/fncGetVerArticulos', {id_articulo:idArticulo}, function (response) {

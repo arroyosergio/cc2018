@@ -4,13 +4,13 @@
                     
                     <div class="col-lg-4 col-sm-3   wow fadeInUp animated " data-wow-duration="2.5s" data-wow-delay="4s" data-wow-animation-name="fadeInUp" style="visibility: visible; animation-duration: 2.5s; animation-delay: .1s; animation-name: fadeInUp;">
                         <div class="contact-info">
-                            <h4 class="foother_title">InformaciÃ³n de contacto</h4>
+                            <h4 class="foother_title">Informaci&oacute;n de contacto</h4>
                             <address>
                                 <span class="address"><span class="resalted"><strong>Teresa Ram&iacute;rez Cano</strong></span><br>
-                                <span><i class="fa fa-user-circle-o" aria-hidden="true"></i> Coordinador general CICA 2018.</span><br>                               
+                                <span><i class="fa fa-user-circle-o" aria-hidden="true"></i> Coordinadora general CICA 2018.</span><br>                               
                                 <span class="address"><span class="resalted"><strong>Jose Antonio Gordillo Sosa</strong></span></span><br>
                                 <span><i class="fa fa-user-circle-o" aria-hidden="true"></i> Coordinador del comit&eacute; arbitral</span><br><br>
-                                <span> <i class="fa fa-phone-square" aria-hidden="true"></i> TelÃ©fono : (456) 64 371 80 
+                                <span> <i class="fa fa-phone-square" aria-hidden="true"></i> Tel&eacute;fono : (456) 64 371 80 
                                 <br>
                                 Extensiones:  106 y 121 </span>
                                 <p><i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp;Email :  <a href="mailto:correo@cica.com">contacto@cica2018.mx</a></p>
@@ -74,7 +74,7 @@
         		<div class="row">
         			<div class="col-md-12">
         				<div class="copyright text-center">
-							<p>Copyright 2018 Congreso Interdisciplinario de Cuerpos AcadÃ©micos </p>
+							<p>Copyright 2018 Congreso Interdisciplinario de Cuerpos Acad&eacute;micos </p>
                             <p>
                                 <i data-toggle="tooltip" title="HTML5" class="fa fa-html5" aria-hidden="true"></i>
                                 <i data-toggle="tooltip" title="Chrome" class="fa fa-chrome" aria-hidden="true"></i>
