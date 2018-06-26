@@ -32,7 +32,7 @@ class Bootstrap {
         $controller->loadMail();
         $controller->loadPDF();
         $controller->loadXmlCFDI();
-//        $controller->loadBarCodeEAN13();
+//      $controller->loadBarCodeEAN13();
 //      Llamado de métodos
         if (isset($url[2])) {
             if (method_exists($controller, $url[1])) {
