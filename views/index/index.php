@@ -29,7 +29,7 @@
             <br>
             <div class="alert alert-info alert-dismissible" role="alert">
                 <button type="button" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <marquee><p style="font-size: 4rem">Se extiende la recepci&oacute;n de trabajos hasta el 30 de junio de 2018.</p></marquee>
+                <marquee><p style="font-size: 4rem">Se extiende la recepci&oacute;n de trabajos hasta el 30 de julio de 2018.</p></marquee>
             </div>
              <div>
                 <h2 class="main_page_title feature-head wow fadeInDown animated"  data-wow-animation-name="fadeInDown" style="visibility: visible; animation-name: fadeInDown;">Congreso Interdisciplinario de Cuerpos Académicos </h2>

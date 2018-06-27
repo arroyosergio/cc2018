@@ -643,7 +643,7 @@ class Registroasistencia extends Controller {
 		} else {
 		    $file = $idArticulo . '/'.$file;
             $responseDB = $this->model->registro_comprobante($idArticulo, $file);
-        
+    
             $this->model->update_estatus_cambios($idArticulo, 'no');
             
             if ($responseDB) {            
