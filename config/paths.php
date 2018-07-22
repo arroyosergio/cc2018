@@ -9,8 +9,8 @@ define('MENUEDITOR',$_SERVER['DOCUMENT_ROOT'] .'/sensontl/views/menu/menueditor.
 
 /*
 * Parametros para conexion al Webservice  del timbrado de los cfdi
-* [Timbox Pruebas]    https://staging.ws.timbox.com.mx/timbrado_cfdi33/wsdl
-* [Timbox Producción] https://sistema.timbox.com.mx/timbrado_cfdi33/wsdl
+* [Timbox Pruebas]     https://staging.ws.timbox.com.mx/timbrado_cfdi33/wsdl
+* [Timbox Producción]  https://sistema.timbox.com.mx/timbrado_cfdi33/wsdl
 */
 define('WSDL_URL','https://staging.ws.timbox.com.mx/timbrado_cfdi33/wsdl');
 define('WSDL_USUARIO','AAA010101000');
