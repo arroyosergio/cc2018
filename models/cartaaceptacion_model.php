@@ -34,7 +34,8 @@ class cartaaceptacion_Model extends Model {
 			   "FROM tblAutoresArticulos AS autores ".
 			   " INNER JOIN tblArticulos AS articulos ON articulos.artId=autores.artId ".
 			   " INNER JOIN tblDocumentos as docs ON docs.art_id=articulos.artId ".
-			   " WHERE autores.autId=$idAutor AND artDictaminado='si' AND docs.doc_validar_carta_ori_ces='si'"; 	
+               " WHERE autores.autId=$idAutor AND artDictaminado='si'"; 
+               //AND docs.doc_validar_carta_ori_ces='si' 	
         $sth = $this->db->prepare($query);
         $sth->setFetchMode(PDO::FETCH_ASSOC);
         $sth->execute();

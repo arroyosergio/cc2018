@@ -35,12 +35,12 @@
 						<div class="frame-message row">
 						    <div class="col-lg-12 col-sm-12">
                             <p>Autor del taller (pendiente)</p>
-							<p>Descripción del taller.</p>
+							<p>Describir de los aspectos necesarios que se deben desarrollar para fortalecer el trabajo conjunto para incrementar el grado de habilitación de los Cuerpos Académicos.</p>
 						    </div>
 						</div>
 						<div class="frame-bottons row">
                             <div class=" text-right col-lg-11 col-sm-11">
-                                <a data-toggle="tooltip" title="Curriculum del ponente."  href="http://www.cica2018.mx/public/cv/CHECTOR.pdf" target="_blank"><i class="fa fa-link" aria-hidden="true">  </i></a>
+                                <!--<a data-toggle="tooltip" title="Curriculum del ponente."  href="http://www.cica2018.mx/public/cv/CHECTOR.pdf" target="_blank"><i class="fa fa-link" aria-hidden="true">  </i></a>-->
                             </div>
                         </div>
 					</div>
@@ -58,7 +58,7 @@
 						<div class="frame-message row">
 						    <div class="col-lg-12 col-sm-12">
                             <p>Dr. Héctor Cuevas Vargas Profesor-investigador  de la Universidad Tecnológica del Suroeste de  Guanajuato.</p>
-							<p>Descripción del taller.</p>
+							<p>Uso de SPSS como herramienta de apoyo para el tratamiento de bases de datos para el análisis de resultados de investigación científica.</p>
 						    </div>
 						</div>
 						<div class="frame-bottons row">
@@ -81,7 +81,7 @@
 						<div class="frame-message row">
 						    <div class="col-lg-12 col-sm-12">
                             <p>Dr. Vicente P&eacute;rez Garc&iacute;a Profesor-Investigador de La Universidad de Guanajuato en la Divisi&oacute;n de Ingenier&iacute;as.</p>
-							<p>Descripción del taller.</p>
+							<p>Recomendaciones sobre la estructura y nivel de profundidad para redactar un artículo, acceso a bases de datos científicas, así como revisión de editoriales idóneas para lograr el mayor impacto de la investigación generada.</p>
 						    </div>
 						</div>
 						<div class="frame-bottons row">
@@ -105,7 +105,7 @@
 						    <div class="col-lg-12 col-sm-12">
                             <p>Dr.Alejandro Zaleta     Email: alex11222@hotmail.com, azaleta@ugto.mx</p>
 							<p>C&oacute;mo crear empresas a partir de los proyectos de investigaci&oacute;n.</p>
-							<p>Proyectos Universidad-Industria.</p>
+							<p>Consejos sobre cómo crear empresas a partir de los proyectos de investigación, así como conocer los lineamientos para generar proyectos Universidad-Industria.</p>
 						    </div>
 						</div>
 						<div class="frame-bottons row">
@@ -129,7 +129,7 @@
 						<div class="frame-message row">
 						    <div class="col-lg-12 col-sm-12">
                             <p>Dr. Hernani Yee Madeira IPN  Email:hernaniyee@hotmail.com</p>
-							<p>Descripción del taller.</p>
+							<p>Revisión de requisitos del CONACYT para los diferentes niveles del SNI, así como recomendaciones para ser reconocido como investigador con producción científica de alto impacto.</p>
 						    </div>
 						</div>
 						<div class="frame-bottons row">

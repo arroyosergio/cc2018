@@ -16,7 +16,8 @@ class cartas_Model extends Model {
                     'FROM '.
                          'tblArticulos inner join tblDocumentos on tblArticulos.artid=tblDocumentos.art_id '.
                     'WHERE '.
-                         'doc_carta_originalidad<>"" or doc_carta_cesion_der<>""';
+				       'tblArticulos.artDictaminado="si"';	 
+					//'doc_carta_originalidad<>"" or doc_carta_cesion_der<>""';
           $sth = $this->db->prepare($query);
           $sth->setFetchMode(PDO::FETCH_ASSOC);
           $sth->execute();

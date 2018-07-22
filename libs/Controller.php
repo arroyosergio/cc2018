@@ -82,6 +82,7 @@ class Controller {
 		}
     }
     
+
 	
 	
 //    public function loadBarCodeEAN13() {
